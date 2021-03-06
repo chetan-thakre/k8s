@@ -1,0 +1,23 @@
+#replicaset definition
+apiVersion: v1
+
+kind: ReplicationController
+
+metadata:
+  name: httpd-replicacontroller
+
+spec:
+  replicas: 5 
+  template: 
+    metadata:
+      name: httpd-pod
+      labels:
+        app: httpd-app
+ 
+    spec: 
+      containers:
+        - image: httpd
+          name: httpd-container
+          ports:
+            - containerPort: 80
+
